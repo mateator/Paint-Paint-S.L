@@ -15,10 +15,8 @@ export class HomeService {
   constructor(private http: HttpClient) { }
 
   getPeopleData(){
-    console.log('entra a service');
-
     return HomeService.pagination$.pipe(
-      switchMap(body => this.http.post(environment.urlApi + '/people',body))
+      switchMap(body => this.http.post(environment.urlApi + '/people', body))
     );
   }
 }

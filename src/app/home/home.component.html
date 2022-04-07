@@ -3,7 +3,7 @@
 
 
 <div class="content">
-  <app-search></app-search>
+  <app-search (textToFilter)="filterByText($event)"></app-search>
 
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
@@ -49,8 +49,10 @@
 
   <mat-paginator [pageSizeOptions]="[10, 20, 50]"
   showFirstLastButtons
-  aria-label="Select the amount of people"
-  (page)="changePage($event)">
+  aria-label="Selecciona la cantidad de personas"
+  (page)="changePage($event)"
+  [length]="dataSourceLength"
+  >
 </mat-paginator>
 </div>
 

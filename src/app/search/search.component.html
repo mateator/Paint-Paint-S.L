@@ -1,4 +1,4 @@
 <ion-item>
-  <ion-input type="text" placeholder="Buscar..."> </ion-input>
-  <ion-button slot="end"> Filtrar </ion-button>
+  <ion-input type="text" placeholder="Buscar..." [formControl]="filterInput"> </ion-input>
+  <ion-button slot="end" (click)="filter()"> Filtrar </ion-button>
 </ion-item>
