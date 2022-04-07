@@ -1,9 +1,16 @@
 table{
-  max-width: 1920px;
   width: 100%;
   margin: auto;
   text-align: center;
   th{
     text-align: center;
   }
+}
+
+.content{
+  max-width: 96em;
+  width: 100%;
+  margin: auto;
+
+  min-height: 80vh;
 }

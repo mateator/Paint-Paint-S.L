@@ -1,44 +1,46 @@
 <ion-content>
-  <app-header></app-header>
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+<app-header></app-header>
 
-    <!--- Note that these columns can be defined in any order.
-          The actual rendered columns are set as a property on the row definition" -->
+
+<div class="content">
+  <app-search></app-search>
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
     <!-- fullName Column -->
     <ng-container matColumnDef="fullName">
       <th mat-header-cell *matHeaderCellDef> Nombre completo </th>
-      <td mat-cell *matCellDef="let element"> {{element.fullName}} </td>
+      <td mat-cell *matCellDef="let element"> {{element.surname}} {{element.surname2}} {{element.name}} </td>
     </ng-container>
 
-    <!-- Name Column -->
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef> Name </th>
-      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    <!-- birthDate Column -->
+    <ng-container matColumnDef="birthDate">
+      <th mat-header-cell *matHeaderCellDef> Fecha de nacimiento </th>
+      <td mat-cell *matCellDef="let element"> {{element.datebirthday|date:'yyyy/MM/dd'}} </td>
     </ng-container>
 
     <!-- gender Column -->
-    <ng-container matColumnDef="gender">
+    <ng-container matColumnDef="sex">
       <th mat-header-cell *matHeaderCellDef> Sexo </th>
-      <td mat-cell *matCellDef="let element"> {{element.gender}} </td>
+      <td mat-cell *matCellDef="let element"> {{element.sex.description}} </td>
     </ng-container>
-
+    <!-- date:'dd/MM/yyyy' -->
     <!-- phone Column -->
     <ng-container matColumnDef="phone">
       <th mat-header-cell *matHeaderCellDef> Teléfono de contacto </th>
-      <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
+      <td mat-cell *matCellDef="let element"> +{{element.country.prefix}} {{element.phone}} </td>
     </ng-container>
 
     <!-- country Column -->
     <ng-container matColumnDef="country">
       <th mat-header-cell *matHeaderCellDef> País </th>
-      <td mat-cell *matCellDef="let element"> {{element.country}} </td>
+      <td mat-cell *matCellDef="let element"> {{element.country.description}} </td>
     </ng-container>
 
     <!-- lastModification Column -->
     <ng-container matColumnDef="lastModification">
       <th mat-header-cell *matHeaderCellDef> Última modificación </th>
-      <td mat-cell *matCellDef="let element"> {{element.lastModification}} </td>
+      <td mat-cell *matCellDef="let element"> {{element.lastModification|date:'yyyy/MM/dd -- h:m'}} </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -47,8 +49,12 @@
 
   <mat-paginator [pageSizeOptions]="[10, 20, 50]"
   showFirstLastButtons
-  aria-label="Select page of periodic elements">
+  aria-label="Select the amount of people"
+  (page)="changePage($event)">
 </mat-paginator>
+</div>
 
-  <app-footer></app-footer>
+<app-footer></app-footer>
+
 </ion-content>
+
