@@ -1,0 +1,54 @@
+<ion-content>
+  <app-header></app-header>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- fullName Column -->
+    <ng-container matColumnDef="fullName">
+      <th mat-header-cell *matHeaderCellDef> Nombre completo </th>
+      <td mat-cell *matCellDef="let element"> {{element.fullName}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+
+    <!-- gender Column -->
+    <ng-container matColumnDef="gender">
+      <th mat-header-cell *matHeaderCellDef> Sexo </th>
+      <td mat-cell *matCellDef="let element"> {{element.gender}} </td>
+    </ng-container>
+
+    <!-- phone Column -->
+    <ng-container matColumnDef="phone">
+      <th mat-header-cell *matHeaderCellDef> Teléfono de contacto </th>
+      <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
+    </ng-container>
+
+    <!-- country Column -->
+    <ng-container matColumnDef="country">
+      <th mat-header-cell *matHeaderCellDef> País </th>
+      <td mat-cell *matCellDef="let element"> {{element.country}} </td>
+    </ng-container>
+
+    <!-- lastModification Column -->
+    <ng-container matColumnDef="lastModification">
+      <th mat-header-cell *matHeaderCellDef> Última modificación </th>
+      <td mat-cell *matCellDef="let element"> {{element.lastModification}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[10, 20, 50]"
+  showFirstLastButtons
+  aria-label="Select page of periodic elements">
+</mat-paginator>
+
+  <app-footer></app-footer>
+</ion-content>
